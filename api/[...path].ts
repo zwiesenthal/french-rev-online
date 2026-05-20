@@ -27,7 +27,8 @@ const bodyObject = (body: unknown): Record<string, unknown> => {
 
 const partsFrom = (req: Req) => {
   const raw = req.query?.path ?? [];
-  return (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
+  const parts = (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
+  return parts[0] === "api" ? parts.slice(1) : parts;
 };
 
 const send = (res: Res, value: unknown, code = 200) => {
