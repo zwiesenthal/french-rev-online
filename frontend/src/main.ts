@@ -62,6 +62,12 @@ type Seat = {
   connected: boolean;
 };
 
+type Participant = {
+  name: string;
+  playerId: string;
+  updatedAt: number;
+};
+
 type Room = {
   id: string;
   createdAt: number;
@@ -69,6 +75,7 @@ type Room = {
   timerSeconds: number | null;
   turnStartedAt: number;
   seats: Seat[];
+  participants: Participant[];
   classes: ClassDef[];
   game: GameState | null;
 };
@@ -90,6 +97,8 @@ let creating = false;
 let message = "";
 let pollTimer = 0;
 let clockTimer = 0;
+let presenceTimer = 0;
+let startPromptOpen = false;
 
 const roomIdFromPath = () => {
   const match = location.pathname.match(/^\/room\/([^/]+)/);
@@ -117,6 +126,47 @@ const classById = (id: string): ClassDef | undefined => data.classes.find((klass
 const seatFor = (classId: string) => room?.seats.find((seat) => seat.classId === classId);
 const playerStorageKey = (id: string) => `fr_player_${id}`;
 const shareUrl = () => `${location.origin}/room/${room?.id ?? roomIdFromPath()}`;
+const browserPlayerKey = "fr_browser_player_id";
+
+const randomId = () => {
+  const bytes = new Uint8Array(12);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (byte) => byte.toString(36).padStart(2, "0")).join("").slice(0, 18);
+};
+
+const ensurePlayerId = () => {
+  if (playerId) return playerId;
+  playerId = localStorage.getItem(browserPlayerKey) || randomId();
+  localStorage.setItem(browserPlayerKey, playerId);
+  return playerId;
+};
+
+const mySeat = () => room?.seats.find((seat) => seat.playerId === playerId);
+
+const unseatedParticipants = () => {
+  if (!room) return [];
+  const seated = new Set(room.seats.map((seat) => seat.playerId));
+  const seen = new Set<string>();
+  return (room.participants ?? []).filter((participant) => {
+    if (!participant.name || seated.has(participant.playerId) || seen.has(participant.playerId)) return false;
+    seen.add(participant.playerId);
+    return true;
+  });
+};
+
+const sendPresence = async () => {
+  if (!room || room.game || !playerName.trim()) return;
+  ensurePlayerId();
+  room = await api<Room>(`/api/rooms/${room.id}/presence`, { playerId, name: playerName });
+  render();
+};
+
+const queuePresence = () => {
+  window.clearTimeout(presenceTimer);
+  presenceTimer = window.setTimeout(() => {
+    sendPresence().catch((error) => setMessage(error instanceof Error ? error.message : String(error)));
+  }, 300);
+};
 
 const isMyTurn = () => {
   if (!room?.game || !playerId) return false;
@@ -200,6 +250,8 @@ const renderHome = () => `
 const renderLobby = () => {
   if (!room) return "";
   const link = shareUrl();
+  const selected = Boolean(mySeat());
+  const waitingNames = unseatedParticipants().map((participant) => participant.name);
   return `
     <section class="setup lobby">
       <div>
@@ -233,10 +285,24 @@ const renderLobby = () => {
           .join("")}
       </div>
       <div class="setup-actions">
-        <button class="primary" data-start-game ${room.seats.length ? "" : "disabled"}>Start game</button>
+        <button class="primary" data-start-game ${selected ? "" : "disabled"} title="${selected ? "Start with open roles as AI" : "Pick a role to start"}">Start game</button>
         <button data-copy-link>Copy invite</button>
         <a class="button-link" href="/">New room</a>
       </div>
+      ${
+        startPromptOpen
+          ? `<div class="modal-backdrop" role="presentation">
+              <div class="modal" role="dialog" aria-modal="true" aria-labelledby="start-wait-title">
+                <h2 id="start-wait-title">Wait for player ${waitingNames.join(", ")} to select a role?</h2>
+                <p>They entered a name but have not picked an estate yet. Open roles will be filled by AI if you start anyway.</p>
+                <div class="modal-actions">
+                  <button class="primary" data-wait-start>Wait</button>
+                  <button data-start-anyway>Start anyway</button>
+                </div>
+              </div>
+            </div>`
+          : ""
+      }
       ${message ? `<p class="notice">${message}</p>` : ""}
     </section>
   `;
@@ -340,8 +406,9 @@ const render = () => {
 const loadRoom = async () => {
   const id = roomIdFromPath();
   if (!id) return;
-  playerId = localStorage.getItem(playerStorageKey(id)) || playerId;
+  playerId = localStorage.getItem(playerStorageKey(id)) || localStorage.getItem(browserPlayerKey) || playerId;
   room = await api<Room>(`/api/rooms/${id}`);
+  if (playerId) localStorage.setItem(browserPlayerKey, playerId);
   render();
 };
 
@@ -360,6 +427,11 @@ const postRoom = async (suffix: string, body?: unknown) => {
   render();
 };
 
+const startGame = async () => {
+  await postRoom("start", { playerId });
+  startPromptOpen = false;
+};
+
 const bind = () => {
   app.addEventListener("submit", async (event) => {
     const form = event.target as HTMLFormElement;
@@ -368,11 +440,15 @@ const bind = () => {
     const fields = new FormData(form);
     playerName = String(fields.get("name") || "").trim();
     localStorage.setItem("fr_player_name", playerName);
+    ensurePlayerId();
     creating = true;
     render();
     try {
-      const created = await api<Room>("/api/rooms", { timerSeconds: fields.get("timer") });
+      const created = await api<Room & { playerId?: string }>("/api/rooms", { timerSeconds: fields.get("timer"), name: playerName, playerId });
+      if (created.playerId) playerId = created.playerId;
       history.pushState(null, "", `/room/${created.id}`);
+      localStorage.setItem(browserPlayerKey, playerId);
+      localStorage.setItem(playerStorageKey(created.id), playerId);
       room = created;
       startPolling();
     } catch (error) {
@@ -388,6 +464,7 @@ const bind = () => {
     if (target.matches("[data-name]")) {
       playerName = target.value;
       localStorage.setItem("fr_player_name", playerName);
+      queuePresence();
     }
   });
 
@@ -396,8 +473,10 @@ const bind = () => {
     try {
       const joinClass = target.closest<HTMLElement>("[data-join]")?.dataset.join;
       if (joinClass && room) {
+        ensurePlayerId();
         const joined = await api<Room & { playerId: string }>(`/api/rooms/${room.id}/join`, { classId: joinClass, name: playerName, playerId });
         playerId = joined.playerId;
+        localStorage.setItem(browserPlayerKey, playerId);
         localStorage.setItem(playerStorageKey(room.id), playerId);
         room = joined;
         message = "";
@@ -405,7 +484,26 @@ const bind = () => {
         return;
       }
       if (target.closest("[data-start-game]")) {
-        await postRoom("start");
+        if (!mySeat()) {
+          setMessage("Pick a role before starting.");
+          return;
+        }
+        const waiting = unseatedParticipants();
+        if (waiting.length) {
+          startPromptOpen = true;
+          render();
+          return;
+        }
+        await startGame();
+        return;
+      }
+      if (target.closest("[data-wait-start]")) {
+        startPromptOpen = false;
+        render();
+        return;
+      }
+      if (target.closest("[data-start-anyway]")) {
+        await startGame();
         return;
       }
       if (target.closest("[data-copy-link]")) {
@@ -440,6 +538,7 @@ const main = async () => {
   bind();
   if (roomIdFromPath()) {
     await loadRoom();
+    if (!room?.game && playerName.trim()) queuePresence();
     startPolling();
   } else render();
 };

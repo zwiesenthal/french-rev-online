@@ -20,6 +20,12 @@ export type Seat = {
   connected: boolean;
 };
 
+export type Participant = {
+  name: string;
+  playerId: string;
+  updatedAt: number;
+};
+
 export type Room = {
   id: string;
   createdAt: number;
@@ -27,6 +33,7 @@ export type Room = {
   timerSeconds: TimerSeconds;
   turnStartedAt: number;
   seats: Seat[];
+  participants: Participant[];
   game: GameState | null;
 };
 
@@ -62,12 +69,21 @@ const serializeRoom = (room: Room) => ({
   timerSeconds: room.timerSeconds,
   turnStartedAt: room.turnStartedAt,
   seats: room.seats,
+  participants: room.participants,
   classes,
   game: room.game ? publicState(room.game, balance) : null,
 });
 
 const claimedClassIds = (room: Room, exceptPlayerId = "") =>
   new Set(room.seats.filter((seat) => seat.playerId !== exceptPlayerId).map((seat) => seat.classId));
+
+const normalizedName = (name: unknown) => String(name || "").trim().slice(0, 32);
+
+const upsertParticipant = (room: Room, playerId: string, name: string) => {
+  if (!playerId || !name) return;
+  room.participants = room.participants.filter((participant) => participant.playerId !== playerId);
+  room.participants.push({ playerId, name, updatedAt: now() });
+};
 
 const ensureRoom = (id: string) => {
   const room = rooms.get(id);
@@ -106,23 +122,37 @@ const expireTurnIfNeeded = (room: Room) => {
   continueAiTurns(room);
 };
 
-export const createRoom = (timerSeconds: unknown) => {
+export const createRoom = (body: Record<string, unknown>) => {
   let id = randomId();
   while (rooms.has(id)) id = randomId();
   const room: Room = {
     id,
     createdAt: now(),
     updatedAt: now(),
-    timerSeconds: normalizeTimer(timerSeconds),
+    timerSeconds: normalizeTimer(body.timerSeconds),
     turnStartedAt: now(),
     seats: [],
+    participants: [],
     game: null,
   };
+  const playerId = String(body.playerId || "");
+  const name = normalizedName(body.name);
+  upsertParticipant(room, playerId, name);
   rooms.set(id, room);
-  return serializeRoom(room);
+  return { ...serializeRoom(room), playerId: playerId || undefined };
 };
 
 export const getRoom = (id: string) => serializeRoom(ensureRoom(id));
+
+export const updatePresence = (id: string, body: Record<string, unknown>) => {
+  const room = ensureRoom(id);
+  if (room.game) return serializeRoom(room);
+  const playerId = String(body.playerId || "");
+  const name = normalizedName(body.name);
+  upsertParticipant(room, playerId, name);
+  touch(room);
+  return serializeRoom(room);
+};
 
 export const joinRoom = (id: string, body: Record<string, unknown>) => {
   const room = ensureRoom(id);
@@ -132,12 +162,14 @@ export const joinRoom = (id: string, body: Record<string, unknown>) => {
   const playerId = String(body.playerId || randomId(18));
   const taken = claimedClassIds(room, playerId);
   if (taken.has(classId)) throw new Error("That class is already claimed.");
+  const name = normalizedName(body.name) || classes.find((klass: { id: string }) => klass.id === classId)?.name || "Player";
+  upsertParticipant(room, playerId, name);
   room.seats = room.seats.filter((seat) => seat.playerId !== playerId);
   room.seats.push({
     classId,
     playerId,
     connected: true,
-    name: String(body.name || "").trim().slice(0, 32) || classes.find((klass: { id: string }) => klass.id === classId)?.name || "Player",
+    name,
   });
   touch(room);
   return { ...serializeRoom(room), playerId };

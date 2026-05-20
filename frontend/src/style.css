@@ -182,6 +182,44 @@ select {
   font-weight: 700;
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(20, 17, 14, 0.5);
+}
+
+.modal {
+  width: min(460px, 100%);
+  padding: 18px;
+  border: 1px solid #d1c3ad;
+  border-radius: 8px;
+  background: #fffaf0;
+  color: #211d19;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.modal h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal p {
+  margin: 10px 0 0;
+  color: #4b433b;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
 .topbar {
   position: sticky;
   top: 0;
