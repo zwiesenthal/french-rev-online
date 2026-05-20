@@ -26,16 +26,16 @@ const bodyObject = (body: unknown): Record<string, unknown> => {
   return body as Record<string, unknown>;
 };
 
+const normalizeParts = (raw: string[]) => {
+  const parts = raw.flatMap((part) => part.split("/")).filter(Boolean);
+  return parts[0] === "api" ? parts.slice(1) : parts;
+};
+
 const partsFrom = (req: Req) => {
   const raw = req.query?.path ?? [];
   const parts = normalizeParts(Array.isArray(raw) ? raw : [raw]);
   const urlParts = normalizeParts((req.url ?? "").split("?")[0].split("/"));
   return ["data", "rooms"].includes(parts[0] ?? "") ? parts : urlParts;
-};
-
-const normalizeParts = (raw: string[]) => {
-  const parts = raw.filter(Boolean);
-  return parts[0] === "api" ? parts.slice(1) : parts;
 };
 
 const send = (res: Res, value: unknown, code = 200) => {
