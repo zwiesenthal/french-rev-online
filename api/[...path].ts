@@ -5,6 +5,7 @@ type Req = {
   method?: string;
   query?: Record<string, string | string[]>;
   body?: unknown;
+  url?: string;
 };
 
 type Res = {
@@ -27,7 +28,13 @@ const bodyObject = (body: unknown): Record<string, unknown> => {
 
 const partsFrom = (req: Req) => {
   const raw = req.query?.path ?? [];
-  const parts = (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
+  const parts = normalizeParts(Array.isArray(raw) ? raw : [raw]);
+  const urlParts = normalizeParts((req.url ?? "").split("?")[0].split("/"));
+  return ["data", "rooms"].includes(parts[0] ?? "") ? parts : urlParts;
+};
+
+const normalizeParts = (raw: string[]) => {
+  const parts = raw.filter(Boolean);
   return parts[0] === "api" ? parts.slice(1) : parts;
 };
 
