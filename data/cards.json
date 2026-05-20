@@ -1,0 +1,1332 @@
+[
+  {
+    "id": "abolish_feudalism",
+    "name": "Abolish Feudalism",
+    "flavor": "Serfs up!",
+    "cost": {
+      "weaponry": 3,
+      "assembly": 2
+    },
+    "requirements": {
+      "weaponry": 3,
+      "assembly": 3,
+      "loyalty": 3
+    },
+    "reward": "National Freedom + 1. Nobles Loyalty -1",
+    "roles": [
+      "Peasants"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/d6e9024f-ae8d-4113-bdea-55966d891cb1/grid_0.png"
+  },
+  {
+    "id": "angry_mob",
+    "name": "Angry Mob",
+    "flavor": "",
+    "cost": {},
+    "requirements": {
+      "loyalty": 2
+    },
+    "reward": "Weaponry + 2",
+    "roles": [
+      "Peasants"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/01b952d8-edba-4f15-99f2-9686f2a7d1c9/grid_0.png"
+  },
+  {
+    "id": "appoint_general",
+    "name": "Appoint General",
+    "flavor": "",
+    "cost": {
+      "assembly": 1,
+      "gold": 2
+    },
+    "requirements": {},
+    "reward": "Loyalty + 1.Weaponry + 3",
+    "roles": [
+      "Committee"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://cdn.midjourney.com/5cba5778-86a5-43ad-a2e6-81540f53f6a9/grid_0.png"
+  },
+  {
+    "id": "bank_loan",
+    "name": "Bank Loan",
+    "flavor": "",
+    "cost": {},
+    "requirements": {},
+    "reward": "Gold Per Turn - 1. Gold + 5. You can buy another card this turn.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/1c2737a3-015b-4b08-bd20-b7cba72042c4/grid_0.png"
+  },
+  {
+    "id": "banquet_hall",
+    "name": "Banquet Hall",
+    "flavor": "",
+    "cost": {
+      "food": 6,
+      "gold": 2
+    },
+    "requirements": {},
+    "reward": "Loyalty + 2",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/3953478f-db5e-4336-8d55-e9c2c633c2a6/grid_0.png"
+  },
+  {
+    "id": "beg",
+    "name": "Beg",
+    "flavor": "",
+    "cost": {},
+    "requirements": {},
+    "reward": "Food + 3 or Gold + 2",
+    "roles": [
+      "Peasants"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 4,
+    "image": "https://i.ibb.co/x5hfX2x/Beg.jpg"
+  },
+  {
+    "id": "bribery",
+    "name": "Bribery",
+    "flavor": "",
+    "cost": {
+      "gold": 6
+    },
+    "requirements": {},
+    "reward": "Loyalty + 1. Assembly + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/5dea2c34-9360-4443-8a39-45485ff958bb/grid_0.png"
+  },
+  {
+    "id": "build_factory",
+    "name": "Build Factory",
+    "flavor": "",
+    "cost": {
+      "gold": 4,
+      "food": 6
+    },
+    "requirements": {},
+    "reward": "Gold Per Turn + 2. (Removed from deck after use)",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/e0557a36-409a-4d7a-a89a-7db8f8457905/grid_0.png"
+  },
+  {
+    "id": "build_farm",
+    "name": "Build Farm",
+    "flavor": "",
+    "cost": {
+      "gold": 4
+    },
+    "requirements": {},
+    "reward": "Food Per Turn + 1. (Removed from deck after use)",
+    "roles": [
+      "Peasants"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 5,
+    "image": "https://cdn.midjourney.com/f68f1ebc-5a06-4feb-8c04-d99b9b4c54e4/grid_0.png"
+  },
+  {
+    "id": "build_trading_post",
+    "name": "Build Trading Post",
+    "flavor": "",
+    "cost": {
+      "gold": 4
+    },
+    "requirements": {},
+    "reward": "Gold Per Turn + 1. (Removed from deck after use)",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 4,
+    "image": "https://cdn.midjourney.com/48d43753-2718-4255-8d48-625c77568472/grid_0.png"
+  },
+  {
+    "id": "buy_food",
+    "name": "Buy Food",
+    "flavor": "",
+    "cost": {
+      "gold": 2
+    },
+    "requirements": {},
+    "reward": "Food + 5",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://cdn.midjourney.com/171a28f0-c762-4078-8edf-48254ab6ad36/grid_0.png"
+  },
+  {
+    "id": "buy_votes",
+    "name": "Buy Votes",
+    "flavor": "",
+    "cost": {
+      "gold": 7
+    },
+    "requirements": {},
+    "reward": "Assembly + 2. National Freedom - 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/76fb5ea7-c6aa-4198-b2d2-aa83e8996782/grid_0.png"
+  },
+  {
+    "id": "buy_weapons",
+    "name": "Buy Weapons",
+    "flavor": "",
+    "cost": {
+      "gold": 1
+    },
+    "requirements": {},
+    "reward": "Weaponry + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 5,
+    "image": "https://cdn.midjourney.com/d71d3693-3453-4425-8abf-c1f2fc31a002/grid_0.png"
+  },
+  {
+    "id": "civil_war",
+    "name": "Civil War",
+    "flavor": "The enemy of my enemy is my enemy.",
+    "cost": {
+      "loyalty": 1
+    },
+    "requirements": {
+      "weaponry": 5
+    },
+    "reward": "Turn order is determined by Weaponry instead of Assembly.National Freedom +/- 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/2f2b1538-3acc-477a-835e-b0c1f0cb9b19/grid_0.png"
+  },
+  {
+    "id": "clergy_swear_allegiance",
+    "name": "Clergy Swear Allegiance",
+    "flavor": "The Church? No, the STATE!",
+    "cost": {
+      "gold": 5
+    },
+    "requirements": {
+      "loyalty": 3,
+      "weaponry": 5
+    },
+    "reward": "Loyalty + 1.National Freedom +/- 2",
+    "roles": [
+      "Nobles"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/ee5f0b6a-e00d-43e3-a9ac-090ab669f342/grid_0.png"
+  },
+  {
+    "id": "cloak_and_dagger",
+    "name": "Cloak and Dagger",
+    "flavor": "",
+    "cost": {
+      "weaponry": 1,
+      "loyalty": 1
+    },
+    "requirements": {},
+    "reward": "Lower loyalty and assembly of another class by 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/cb405ef3-3c62-44f1-9cd3-8e8bb8e64744/grid_0.png"
+  },
+  {
+    "id": "committee_of_general_security",
+    "name": "Committee of General Security",
+    "flavor": "Someone needs to enfore the rules, after all.",
+    "cost": {
+      "weaponry": 1,
+      "assembly": 1
+    },
+    "requirements": {},
+    "reward": "Killing enemies of revolution now costs 1 Loyalty less. National Freedom - 1",
+    "roles": [
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/932ebbaf-2336-4667-944e-43f1fd80c2e8/grid_0.png"
+  },
+  {
+    "id": "communism",
+    "name": "Communism",
+    "flavor": "Seize the means of production!",
+    "cost": {
+      "gold": 4,
+      "food": 5
+    },
+    "requirements": {
+      "loyalty": 4
+    },
+    "reward": "Loyalty + 1. You can't lose or gain money. If National Freedom < 4, then Food Per Turn - 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/47e2a66f-32d2-4fe0-ac52-eda9643231f5/grid_0.png"
+  },
+  {
+    "id": "coup_d_etat",
+    "name": "Coup d'état",
+    "flavor": "",
+    "cost": {
+      "weaponry": 3,
+      "loyalty": 1
+    },
+    "requirements": {
+      "weaponry": 6,
+      "loyalty": 3
+    },
+    "reward": "Gain Assembly Seats equal to your Weaponry (after cost).",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/349facbb-4cf3-4f3c-81c4-c6cdc56f2570/grid_0.png"
+  },
+  {
+    "id": "crop_rotation",
+    "name": "Crop Rotation",
+    "flavor": "",
+    "cost": {
+      "assembly": 1
+    },
+    "requirements": {
+      "loyalty": 3
+    },
+    "reward": "Double your current Food Per Turn.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/af16a6c2-a5c1-4184-8183-197494bc1c4d/grid_0.png"
+  },
+  {
+    "id": "election_campaign",
+    "name": "Election Campaign",
+    "flavor": "",
+    "cost": {
+      "gold": 3,
+      "loyalty": 1
+    },
+    "requirements": {},
+    "reward": "Take an assembly seat from another target player",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/2f2df7dc-54fc-419b-8819-091d6597718e/grid_0.webp"
+  },
+  {
+    "id": "embezzle_money",
+    "name": "Embezzle Money",
+    "flavor": "",
+    "cost": {
+      "loyalty": 1
+    },
+    "requirements": {},
+    "reward": "Gold + 4. You can buy another card this turn.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/775fd8a3-97f2-4da8-b99d-3a99524bf6c4/grid_0.png"
+  },
+  {
+    "id": "enter_enlightenment",
+    "name": "Enter Enlightenment",
+    "flavor": "We hold these truths to be self evident...",
+    "cost": {
+      "assembly": 2
+    },
+    "requirements": {
+      "assembly": 4,
+      "loyalty": 4
+    },
+    "reward": "National Freedom +1. Take two actions per turn.",
+    "roles": [
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/0c3eda77-3e2d-49be-9d69-ec6d67f642b5/grid_0.png"
+  },
+  {
+    "id": "enter_reign_of_terror",
+    "name": "Enter Reign Of Terror",
+    "flavor": "Terror is nothing more than justice, prompt, secure and inflexible.",
+    "cost": {
+      "weaponry": 1
+    },
+    "requirements": {
+      "loyalty": 4,
+      "assembly": 3,
+      "weaponry": 3
+    },
+    "reward": "Killing enemies of revolution cost is halved",
+    "roles": [
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/05c7efb4-7f87-49ec-9bbd-d941624cf3d2/grid_0.png"
+  },
+  {
+    "id": "espionage",
+    "name": "Espionage",
+    "flavor": "",
+    "cost": {
+      "loyalty": 1
+    },
+    "requirements": {},
+    "reward": "Ignore class restrictions on one action. You can buy another card this turn.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/1ddebf3e-084a-40c5-8640-5fbfed07c291/grid_0.png"
+  },
+  {
+    "id": "feast",
+    "name": "Feast",
+    "flavor": "",
+    "cost": {
+      "food": 4
+    },
+    "requirements": {},
+    "reward": "Only costs 1 food if you have built a farm. Loyalty + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/fb39d6be-e39d-4309-b2f7-94215e3ecec4/grid_0.png"
+  },
+  {
+    "id": "foreign_aid",
+    "name": "Foreign Aid",
+    "flavor": "",
+    "cost": {
+      "loyalty": 1,
+      "gold": 1
+    },
+    "requirements": {},
+    "reward": "Weaponry + 2.Food + 2",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/081471ea-f0ff-47ed-b174-6c9a05c4251d/grid_0.png"
+  },
+  {
+    "id": "guillotine_marie_antionette",
+    "name": "Guillotine Marie Antionette",
+    "flavor": "Time to eat cake!",
+    "cost": {
+      "weaponry": 2
+    },
+    "requirements": {
+      "weaponry": 4,
+      "loyalty": 3
+    },
+    "reward": "Food + 5 (If executed by Committee, counts as 2 enemies killed). National Freedom + 1",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/c4c2cb90-61d0-49fc-a226-fa287e40a59a/grid_0.png"
+  },
+  {
+    "id": "guillotine_robespierre",
+    "name": "Guillotine Robespierre",
+    "flavor": "You can't make an omelette without breaking a few eggs",
+    "cost": {
+      "weaponry": 3,
+      "assembly": 1
+    },
+    "requirements": {
+      "assembly": 4
+    },
+    "reward": "National Freedom +/- 2. Committee Loyalty - 1",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Nobles"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/f8d8bddd-4fd2-49b8-9d35-ae1155c0db28/grid_0.png"
+  },
+  {
+    "id": "guillotine_king_louis_xvi",
+    "name": "Guillotine King Louis XVI",
+    "flavor": "The dinosaur is having one last roar at the meteor before it wipes him out.",
+    "cost": {
+      "weaponry": 2,
+      "loyalty": 1
+    },
+    "requirements": {
+      "weaponry": 4,
+      "assembly": 4
+    },
+    "reward": "Assembly + 2. Nobles Loyalty - 1. National Freedom +/- 2",
+    "roles": [
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/ef563782-2ab8-46ef-a29f-4589869dcfd2/grid_0.png"
+  },
+  {
+    "id": "habeas_corpus",
+    "name": "Habeas Corpus",
+    "flavor": "It is better to risk saving a guilty man than to condemn an innocent one",
+    "cost": {
+      "assembly": 1,
+      "loyalty": 1
+    },
+    "requirements": {
+      "loyalty": 4,
+      "assembly": 5
+    },
+    "reward": "National Freedom + 3",
+    "roles": [
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/87475764-4938-44b5-acfa-ca621fcf534a/grid_0.png"
+  },
+  {
+    "id": "hire_spy",
+    "name": "Hire Spy",
+    "flavor": "",
+    "cost": {
+      "gold": 4
+    },
+    "requirements": {},
+    "reward": "Lower loyalty of another class by 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/7c137749-2286-4f56-88bf-ba78a5f936b9/grid_0.png"
+  },
+  {
+    "id": "imperialism",
+    "name": "Imperialism",
+    "flavor": "I came, I saw, I conquered",
+    "cost": {
+      "weaponry": 3,
+      "food": 3
+    },
+    "requirements": {
+      "loyalty": 2
+    },
+    "reward": "Gold and Food Per Turn + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/17f75b7c-ac39-42a8-95a4-ef79ff4d592b/grid_0.png"
+  },
+  {
+    "id": "kill_enemy_of_revolution",
+    "name": "Kill Enemy of Revolution",
+    "flavor": "",
+    "cost": {
+      "loyalty": 2,
+      "weaponry": 2
+    },
+    "requirements": {},
+    "reward": "1 Enemy Killed. Lower assembly of another player by 1.",
+    "roles": [
+      "Committee"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 6,
+    "image": "https://cdn.midjourney.com/bf225d74-8661-46c2-ba46-3fd6122f9522/grid_0.png"
+  },
+  {
+    "id": "knowledge_is_power",
+    "name": "Knowledge is Power",
+    "flavor": "France is Bacon",
+    "cost": {},
+    "requirements": {
+      "loyalty": 3,
+      "assembly": 3
+    },
+    "reward": "Gain + 1 Weaponry for every Major Card you have (including this one).",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/4f395441-43f7-4177-aa62-2b94dadb2732/grid_0.png"
+  },
+  {
+    "id": "military_parade",
+    "name": "Military Parade",
+    "flavor": "",
+    "cost": {
+      "weaponry": 3
+    },
+    "requirements": {
+      "weaponry": 5
+    },
+    "reward": "Loyalty + 2",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/13a73279-9c1d-407f-95e9-ee5de6b2d433/grid_0.png"
+  },
+  {
+    "id": "militia",
+    "name": "Militia",
+    "flavor": "",
+    "cost": {
+      "gold": 1,
+      "food": 2
+    },
+    "requirements": {
+      "loyalty": 3
+    },
+    "reward": "Weaponry + 2. Peasants ignore loyalty requirement",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/99fd00fe-8a40-4cfa-89d6-ea40e5873a70/grid_0.png"
+  },
+  {
+    "id": "mob_rule",
+    "name": "Mob Rule",
+    "flavor": "Tyranny of the majority.",
+    "cost": {
+      "weaponry": 5
+    },
+    "requirements": {
+      "loyalty": 3
+    },
+    "reward": "Assembly + 5. National Freedom - 1",
+    "roles": [
+      "Peasants"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/6c294d39-2b6d-4769-a76a-09b6c7d0ff04/grid_0.png"
+  },
+  {
+    "id": "nepotism",
+    "name": "Nepotism",
+    "flavor": "",
+    "cost": {
+      "loyalty": 1,
+      "gold": 3
+    },
+    "requirements": {},
+    "reward": "Assembly + 1.National Freedom - 1",
+    "roles": [
+      "Nobles"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/3199cec0-e6f6-4421-ad0e-a8065c222bc9/grid_0.png"
+  },
+  {
+    "id": "pamper_people",
+    "name": "Pamper People",
+    "flavor": "",
+    "cost": {
+      "gold": 2,
+      "food": 2
+    },
+    "requirements": {},
+    "reward": "Loyalty + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 4,
+    "image": "https://cdn.midjourney.com/c55be824-3db1-419b-8691-6ac9cdd05f09/grid_0.png"
+  },
+  {
+    "id": "parliamentary_review",
+    "name": "Parliamentary Review",
+    "flavor": "",
+    "cost": {
+      "gold": 2
+    },
+    "requirements": {
+      "assembly": 4,
+      "loyalty": 2
+    },
+    "reward": "Play a  Major card from the discard pile (by paying it's cost).",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 4,
+    "image": "https://cdn.midjourney.com/381d5450-d2f2-4d35-afde-924f0c677699/grid_0.png"
+  },
+  {
+    "id": "persuasive_speech",
+    "name": "Persuasive Speech",
+    "flavor": "",
+    "cost": {},
+    "requirements": {
+      "loyalty": 4
+    },
+    "reward": "Assembly + 1",
+    "roles": [
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://cdn.midjourney.com/37bbe483-b077-4e83-a3b2-dc656d85074f/grid_0.png"
+  },
+  {
+    "id": "pity_party",
+    "name": "Pity Party",
+    "flavor": "",
+    "cost": {},
+    "requirements": {},
+    "reward": "Loyalty + 1. Assembly + 1",
+    "roles": [
+      "Peasants"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://v3b.fal.media/files/b/0a87a249/FJEAUPYyGT79cfMZT6Gm1.jpg"
+  },
+  {
+    "id": "political_convention",
+    "name": "Political Convention",
+    "flavor": "",
+    "cost": {
+      "food": 2
+    },
+    "requirements": {},
+    "reward": "Exchange any amount of Loyalty for Assembly, or vice versa.",
+    "roles": [
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/96430532-4d88-4580-a6f7-00d6c4398b25/grid_0.png"
+  },
+  {
+    "id": "print_propaganda",
+    "name": "Print Propaganda",
+    "flavor": "",
+    "cost": {
+      "gold": 3,
+      "assembly": 1
+    },
+    "requirements": {},
+    "reward": "Loyalty + 2. National Freedom +/- 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://cdn.midjourney.com/2f2df7dc-54fc-419b-8819-091d6597718e/grid_0.png"
+  },
+  {
+    "id": "liberate",
+    "name": "Liberate",
+    "flavor": "",
+    "cost": {
+      "weaponry": 1
+    },
+    "requirements": {
+      "assembly": 2
+    },
+    "reward": "National Freedom + 1",
+    "roles": [
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://i.ibb.co/jyDrf1T/Euge-ne-Delacroix-Le-28-Juillet-La-Liberte-guidant-le-peuple-1.jpg"
+  },
+  {
+    "id": "publish_oeuvres_de_robespierre",
+    "name": "Publish Oeuvres de Robespierre",
+    "flavor": "The pen is mightier than the sword",
+    "cost": {
+      "gold": 4,
+      "food": 2
+    },
+    "requirements": {},
+    "reward": "Loyalty + 1.Assembly + 1.Weaponry + 1",
+    "roles": [
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/8fde9233-0081-4ed6-933d-c3fb6f3fe95b/grid_0.png"
+  },
+  {
+    "id": "raiding_party",
+    "name": "Raiding Party",
+    "flavor": "",
+    "cost": {
+      "weaponry": 1
+    },
+    "requirements": {},
+    "reward": "Gold + 3.Food + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/5bf56dae-4820-453d-ab42-8c4732f45296/grid_0.png"
+  },
+  {
+    "id": "buy_cannons",
+    "name": "Buy Cannons",
+    "flavor": "",
+    "cost": {
+      "gold": 3
+    },
+    "requirements": {},
+    "reward": "Weaponry + 2",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 4,
+    "image": "https://cdn.midjourney.com/291c94fa-c538-44de-ae7c-163e8a40db07/grid_0.png"
+  },
+  {
+    "id": "rally_support",
+    "name": "Rally Support",
+    "flavor": "",
+    "cost": {
+      "gold": 3,
+      "food": 2
+    },
+    "requirements": {
+      "loyalty": 2
+    },
+    "reward": "Loyalty or Assembly + 1.National Freedom +/- 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 3,
+    "image": "https://i.ibb.co/QF6VRfh/DALL-E-2023-01-08-14-04-24-oil-painting-of-face.png"
+  },
+  {
+    "id": "ransack",
+    "name": "Ransack",
+    "flavor": "",
+    "cost": {
+      "weaponry": 2
+    },
+    "requirements": {},
+    "reward": "Steal up to 2 food from a player.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/eab6a16b-5ec3-4761-a2f0-4bba51ed06f9/grid_0.png"
+  },
+  {
+    "id": "republican_calendar",
+    "name": "Republican Calendar",
+    "flavor": "100 Minutes per Hour, 10 Hours per Day, 100 Days per Year",
+    "cost": {
+      "loyalty": 1
+    },
+    "requirements": {},
+    "reward": "National Freedom + 1. You take the first action next round.",
+    "roles": [
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Calendrier-republicain-debucourt2.jpg/1024px-Calendrier-republicain-debucourt2.jpg"
+  },
+  {
+    "id": "seize_manor",
+    "name": "Seize Manor",
+    "flavor": "",
+    "cost": {
+      "weaponry": 2
+    },
+    "requirements": {
+      "loyalty": 2
+    },
+    "reward": "Gold + 3. Food +3. Nobles Food - 1",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/d1d0b031-5ed6-41e8-b9c1-025f911be7b1/grid_0.png"
+  },
+  {
+    "id": "separate_church_and_state",
+    "name": "Separate Church and State",
+    "flavor": "One good schoolmaster is of more use than a hundred priests.",
+    "cost": {
+      "weaponry": 3
+    },
+    "requirements": {
+      "loyalty": 3,
+      "assembly": 3
+    },
+    "reward": "National Freedom +1. Nobles lose an assembly seat",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/22c50f80-e739-4d11-8c84-6b71d1180b38/grid_0.png"
+  },
+  {
+    "id": "skirmish",
+    "name": "Skirmish",
+    "flavor": "",
+    "cost": {
+      "weaponry": 2
+    },
+    "requirements": {},
+    "reward": "Target Class loses 2 weapons. (During Civil War, they lose 4). If they cannot defend, they lose a loyalty.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/3077ab07-99b8-4fe4-b969-52a82bb834f2/grid_0.png"
+  },
+  {
+    "id": "wine_and_dine",
+    "name": "Wine and Dine",
+    "flavor": "",
+    "cost": {
+      "food": 4
+    },
+    "requirements": {},
+    "reward": "Assembly + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/0bc0f7dc-7178-4740-ba45-357e385c7538/grid_0.png"
+  },
+  {
+    "id": "storm_bastille",
+    "name": "Storm Bastille",
+    "flavor": "Fight fire with fire.",
+    "cost": {
+      "gold": 2,
+      "food": 2
+    },
+    "requirements": {
+      "weaponry": 4,
+      "loyalty": 3
+    },
+    "reward": "Weaponry + 2.Loyalty + 1.National Freedom +/- 1",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/2fa23055-f391-49b0-94b9-a40d738a0119/grid_0.png"
+  },
+  {
+    "id": "tennis_court_oath",
+    "name": "Tennis Court Oath",
+    "flavor": "Location,<br>Location,<br> Location.",
+    "cost": {
+      "food": 3,
+      "gold": 1
+    },
+    "requirements": {
+      "loyalty": 3,
+      "assembly": 4
+    },
+    "reward": "Halve the costs and requirements of <b>Constitution</b> and <b>Enter Enlightenment</b>. National Freedom + 2",
+    "roles": [
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/e68e1a17-097e-4393-8df0-a91f847c7635/grid_0.png"
+  },
+  {
+    "id": "tithe_peasants",
+    "name": "Tithe Peasants",
+    "flavor": "",
+    "cost": {
+      "assembly": 1
+    },
+    "requirements": {},
+    "reward": "Gold + 6.Peasants Gold - 1",
+    "roles": [
+      "Nobles"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/b5254239-29e9-480e-8a82-2e5f83b92670/grid_0.png"
+  },
+  {
+    "id": "veto",
+    "name": "Veto",
+    "flavor": "",
+    "cost": {
+      "assembly": 1
+    },
+    "requirements": {
+      "assembly": 3,
+      "loyalty": 3
+    },
+    "reward": "Remove an available card and put it on top of the draw pile. You can buy another card this turn.",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": true,
+    "count": 1,
+    "image": "https://i.ibb.co/kgLNmx7/DALL-E-2023-01-08-14-13-55-1.png"
+  },
+  {
+    "id": "women_s_march_on_versailles",
+    "name": "Women's March on Versailles",
+    "flavor": "Men fight wars. Women win them.",
+    "cost": {
+      "weaponry": 2,
+      "food": 2
+    },
+    "requirements": {
+      "weaponry": 4,
+      "loyalty": 3
+    },
+    "reward": "Loyalty + 2.Nobles Loyalty - 1.National Freedom + 1",
+    "roles": [
+      "Peasants",
+      "Bourgeoisie",
+      "Committee"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/bb4d01ff-1b10-4001-a57f-caf0f30a3c5e/grid_0.png"
+  },
+  {
+    "id": "backroom_deal",
+    "name": "Backroom Deal",
+    "flavor": "",
+    "cost": {
+      "gold": 4
+    },
+    "requirements": {},
+    "reward": "Assembly + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://cdn.midjourney.com/d68f9ecc-7399-4143-9ac3-ab36e0aa29b7/grid_0.png"
+  },
+  {
+    "id": "absolute_monarchy",
+    "name": "Absolute Monarchy",
+    "flavor": "Absolute power corrupts absolutely.",
+    "cost": {},
+    "requirements": {
+      "loyalty": 5
+    },
+    "reward": "Steal one Assembly from each player. National Freedom - 3",
+    "roles": [
+      "Nobles"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/8c56783a-44e3-4ed9-afc5-66c5aa4af105/grid_0.png"
+  },
+  {
+    "id": "court_jester",
+    "name": "Court Jester",
+    "flavor": "",
+    "cost": {
+      "gold": 2
+    },
+    "requirements": {},
+    "reward": "Loyalty + 1. Peasant's Gold + 2",
+    "roles": [
+      "Nobles"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 1,
+    "image": "https://i.ibb.co/pfCbGy6/Jan-Matejko-Stan-czyk.jpg"
+  },
+  {
+    "id": "hms_revolutionnaire",
+    "name": "HMS Révolutionnaire",
+    "flavor": "40-gun Seine-class Frigate",
+    "cost": {
+      "gold": 10
+    },
+    "requirements": {},
+    "reward": "Weaponry + 5",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": true,
+    "tactique": false,
+    "count": 1,
+    "image": "https://cdn.midjourney.com/16323f3d-f751-48ec-9f97-a6c716804d3d/grid_0.png"
+  },
+  {
+    "id": "fireworks_display",
+    "name": "Fireworks Display",
+    "flavor": "",
+    "cost": {
+      "weaponry": 1
+    },
+    "requirements": {
+      "weaponry": 4
+    },
+    "reward": "Loyalty + 1",
+    "roles": [
+      "Peasants",
+      "Nobles",
+      "Committee",
+      "Bourgeoisie"
+    ],
+    "major": false,
+    "tactique": false,
+    "count": 2,
+    "image": "https://v3b.fal.media/files/b/0a87a1e7/79n-M0OJWfhHcRthmqpQw.jpg"
+  }
+]

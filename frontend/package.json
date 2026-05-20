@@ -1,0 +1,16 @@
+{
+  "name": "republic-of-virtue",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.1.0",
+    "vite": "^7.2.6",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {}
+}

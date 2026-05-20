@@ -1,0 +1,10 @@
+backend/build/
+frontend/dist/
+frontend/node_modules/
+node_modules/
+.vercel/
+reports/*.json
+reports/*.log
+reports/*.in_progress.md
+reports/checkpoints/
+.playwright-mcp/

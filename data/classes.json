@@ -1,0 +1,118 @@
+[
+  {
+    "id": "peasants",
+    "name": "Peasants",
+    "start": {
+      "goldPerTurn": 1,
+      "foodPerTurn": 1,
+      "foodRequired": 3,
+      "weaponry": 3,
+      "loyalty": 2,
+      "gold": 1,
+      "food": 3,
+      "assembly": 1
+    },
+    "goals": [
+      {
+        "id": "abolish_feudalism",
+        "label": "Abolish Feudalism"
+      },
+      {
+        "id": "more_assembly_than_nobles",
+        "label": "Have more assembly than the Nobles"
+      },
+      {
+        "id": "food_15",
+        "label": "Reach 15 food"
+      }
+    ],
+    "portrait": "https://cdn.midjourney.com/56bfe2bb-9cc8-4495-ba80-1f5e13d39eae/grid_0.png"
+  },
+  {
+    "id": "nobles",
+    "name": "Nobles",
+    "start": {
+      "goldPerTurn": 1,
+      "foodPerTurn": 1,
+      "foodRequired": 1,
+      "weaponry": 3,
+      "loyalty": 2,
+      "gold": 6,
+      "food": 6,
+      "assembly": 4
+    },
+    "goals": [
+      {
+        "id": "assembly_control",
+        "label": "Assembly control"
+      },
+      {
+        "id": "national_freedom_1",
+        "label": "Lower National Freedom to 1"
+      },
+      {
+        "id": "gold_30_weaponry_10",
+        "label": "Reach 30 gold and 10 weaponry"
+      }
+    ],
+    "portrait": "https://cdn.midjourney.com/64cbbe7c-c28c-4de4-8ae5-bb2149eba155/grid_0.png"
+  },
+  {
+    "id": "committee",
+    "name": "Committee",
+    "start": {
+      "goldPerTurn": 1,
+      "foodPerTurn": 1,
+      "foodRequired": 1,
+      "weaponry": 4,
+      "loyalty": 2,
+      "gold": 3,
+      "food": 3,
+      "assembly": 2
+    },
+    "goals": [
+      {
+        "id": "guillotine_king_louis_xvi",
+        "label": "Guillotine King Louis XVI"
+      },
+      {
+        "id": "kill_3_enemies",
+        "label": "Kill 3 enemies of revolution"
+      },
+      {
+        "id": "most_weaponry",
+        "label": "Have the most weaponry"
+      }
+    ],
+    "portrait": "https://cdn.midjourney.com/0ffafd87-7cd2-46ba-abc2-4e460f8377ef/grid_0.png"
+  },
+  {
+    "id": "bourgeoisie",
+    "name": "Bourgeoisie",
+    "start": {
+      "goldPerTurn": 1,
+      "foodPerTurn": 1,
+      "foodRequired": 1,
+      "weaponry": 2,
+      "loyalty": 2,
+      "gold": 4,
+      "food": 5,
+      "assembly": 3
+    },
+    "goals": [
+      {
+        "id": "assembly_control",
+        "label": "Assembly control"
+      },
+      {
+        "id": "enlightenment_loyalty_7",
+        "label": "Enter Enlightenment and reach 7 loyalty"
+      },
+      {
+        "id": "national_freedom_9",
+        "label": "Raise National Freedom to 9"
+      }
+    ],
+    "portrait": "https://cdn.midjourney.com/7de808de-68c9-4ad1-b6fa-8e5191b5d4a6/grid_0.png"
+  }
+]

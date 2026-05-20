@@ -1,0 +1,19 @@
+{
+  "name": "french-rev-online",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "check": "tsc -p tsconfig.api.json && npm --prefix frontend run build",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/node": "^5.5.20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vercel": "^48.10.2"
+  }
+}

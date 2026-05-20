@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>French Rev Tweak 4 Balance Visual</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17212b;
+        --muted: #65717d;
+        --line: #dbe2e8;
+        --paper: #f7f8f4;
+        --panel: #ffffff;
+        --good: #1f8a70;
+        --bad: #ba3f3f;
+        --neutral: #456990;
+        --gold: #b8860b;
+        --blue: #2f6fb0;
+        --violet: #6d5a9c;
+        --target: #e4f2da;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 26px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+        gap: 18px;
+        align-items: stretch;
+        min-height: 210px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.2rem, 5vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        font-size: 1.02rem;
+      }
+
+      .eyebrow {
+        color: var(--bad);
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 1.02rem;
+        margin-top: 18px;
+      }
+
+      .source {
+        color: var(--muted);
+        font-size: 0.82rem;
+        margin-top: 12px;
+      }
+
+      .panel,
+      .metric,
+      .class-panel,
+      .card-row,
+      .goal-row {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .simulation-panel {
+        display: grid;
+        gap: 13px;
+      }
+
+      .win-row {
+        display: grid;
+        grid-template-columns: 112px 1fr 56px;
+        gap: 12px;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+
+      .track {
+        position: relative;
+        height: 14px;
+        overflow: hidden;
+        background: #edf1f3;
+        border-radius: 999px;
+      }
+
+      .target-band {
+        position: absolute;
+        inset-block: 0;
+        left: 22%;
+        width: 6%;
+        background: var(--target);
+        border-left: 1px solid #93c47d;
+        border-right: 1px solid #93c47d;
+      }
+
+      .bar {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        border-radius: 999px;
+        background: var(--neutral);
+      }
+
+      .bar.peasants {
+        background: var(--good);
+      }
+
+      .bar.nobles {
+        background: var(--gold);
+      }
+
+      .bar.committee {
+        background: var(--bad);
+      }
+
+      .bar.bourgeoisie {
+        background: var(--blue);
+      }
+
+      .section {
+        margin-top: 22px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .section-head p {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric {
+        padding: 14px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.65rem;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.82rem;
+        margin-top: 6px;
+      }
+
+      .classes {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .class-panel {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .class-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+
+      .crest {
+        width: 13px;
+        height: 28px;
+        border-radius: 999px;
+        background: var(--neutral);
+      }
+
+      .crest.peasants {
+        background: var(--good);
+      }
+
+      .crest.nobles {
+        background: var(--gold);
+      }
+
+      .crest.committee {
+        background: var(--bad);
+      }
+
+      .crest.bourgeoisie {
+        background: var(--blue);
+      }
+
+      .stat-change {
+        display: grid;
+        grid-template-columns: 82px 1fr;
+        gap: 10px;
+        align-items: center;
+        font-size: 0.84rem;
+      }
+
+      .stat-name {
+        color: var(--muted);
+      }
+
+      .before-after {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .pill {
+        min-width: 34px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #edf1f3;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .pill.after.up {
+        background: #dff3ea;
+        color: #126249;
+      }
+
+      .pill.after.down {
+        background: #f7dfdf;
+        color: #8c2828;
+      }
+
+      .arrow {
+        color: var(--muted);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .goal-list,
+      .card-list {
+        display: grid;
+        gap: 9px;
+      }
+
+      .goal-row {
+        display: grid;
+        grid-template-columns: 132px 1fr 126px;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 12px;
+        font-size: 0.86rem;
+      }
+
+      .goal-class {
+        font-weight: 800;
+      }
+
+      .goal-text {
+        color: var(--muted);
+      }
+
+      .delta {
+        justify-self: end;
+        font-weight: 900;
+      }
+
+      .delta.buff {
+        color: var(--good);
+      }
+
+      .delta.nerf {
+        color: var(--bad);
+      }
+
+      .card-row {
+        display: grid;
+        grid-template-columns: 1fr 190px 90px;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 12px;
+      }
+
+      .card-name {
+        font-weight: 800;
+        min-width: 0;
+      }
+
+      .costs {
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      .cost-visual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .cost-mini {
+        height: 8px;
+        border-radius: 999px;
+        background: #edf1f3;
+        overflow: hidden;
+      }
+
+      .cost-mini span {
+        display: block;
+        height: 100%;
+        border-radius: 999px;
+        background: var(--neutral);
+      }
+
+      .change-chip {
+        justify-self: end;
+        border-radius: 999px;
+        padding: 5px 10px;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .change-chip.buff {
+        background: #dff3ea;
+        color: #126249;
+      }
+
+      .change-chip.nerf {
+        background: #f7dfdf;
+        color: #8c2828;
+      }
+
+      .intent-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .intent {
+        border-top: 4px solid var(--neutral);
+      }
+
+      .intent p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+
+      .note {
+        border-left: 4px solid var(--violet);
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-top: 14px;
+        padding: 10px 12px;
+      }
+
+      @media (max-width: 900px) {
+        header,
+        .split,
+        .classes,
+        .intent-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        main {
+          width: min(100% - 20px, 1180px);
+          padding-top: 16px;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .win-row,
+        .goal-row,
+        .card-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .delta,
+        .change-chip {
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <section>
+          <p class="eyebrow">Tweak 4 vs Original Game</p>
+          <h1>Balance changes at a glance</h1>
+          <p class="lead">
+            A visual comparison of the original French Revolution board-game data against the active
+            Tweak 4 balance profile. Green means the class or card got easier; red means the path
+            was taxed or made harder.
+          </p>
+          <p class="source">
+            Source: <code>reports/balance.md</code>, <code>data/classes.json</code>, and playable
+            cost rules in <code>src/shared/engine.ts</code>.
+          </p>
+        </section>
+
+        <aside class="panel simulation-panel" aria-label="Tweak 4 simulation result">
+          <h2>250 Game Result</h2>
+          <div class="win-row">
+            <strong>Peasants</strong>
+            <div class="track"><span class="target-band"></span><span class="bar peasants" style="width: 22.8%"></span></div>
+            <span>22.8%</span>
+          </div>
+          <div class="win-row">
+            <strong>Nobles</strong>
+            <div class="track"><span class="target-band"></span><span class="bar nobles" style="width: 26.8%"></span></div>
+            <span>26.8%</span>
+          </div>
+          <div class="win-row">
+            <strong>Committee</strong>
+            <div class="track"><span class="target-band"></span><span class="bar committee" style="width: 22.4%"></span></div>
+            <span>22.4%</span>
+          </div>
+          <div class="win-row">
+            <strong>Bourgeoisie</strong>
+            <div class="track"><span class="target-band"></span><span class="bar bourgeoisie" style="width: 28%"></span></div>
+            <span>28.0%</span>
+          </div>
+          <p class="source">Target band shown in pale green: 22-28% win rate.</p>
+        </aside>
+      </header>
+
+      <section class="section">
+        <div class="metrics">
+          <article class="metric">
+            <strong>24</strong>
+            <span>Total balance levers changed in Tweak 4</span>
+          </article>
+          <article class="metric">
+            <strong>9</strong>
+            <span>Card cost changes, including 7 taxes and 2 discounts</span>
+          </article>
+          <article class="metric">
+            <strong>8</strong>
+            <span>Starting stat changes across all four classes</span>
+          </article>
+          <article class="metric">
+            <strong>7</strong>
+            <span>Objective thresholds changed from the original goals</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Starting Stats</h2>
+          <p>Only stats changed by Tweak 4 are shown. Unlisted starting values stay at their original class baselines.</p>
+        </div>
+        <div class="classes">
+          <article class="class-panel">
+            <div class="class-title"><span class="crest peasants"></span><h3>Peasants</h3></div>
+            <div class="stat-change">
+              <span class="stat-name">Food</span>
+              <span class="before-after"><span class="pill">3</span><span class="arrow">to</span><span class="pill after up">5</span></span>
+            </div>
+            <div class="stat-change">
+              <span class="stat-name">Food/turn</span>
+              <span class="before-after"><span class="pill">1</span><span class="arrow">to</span><span class="pill after up">2</span></span>
+            </div>
+          </article>
+
+          <article class="class-panel">
+            <div class="class-title"><span class="crest nobles"></span><h3>Nobles</h3></div>
+            <div class="stat-change">
+              <span class="stat-name">Gold</span>
+              <span class="before-after"><span class="pill">6</span><span class="arrow">to</span><span class="pill after up">7</span></span>
+            </div>
+            <div class="stat-change">
+              <span class="stat-name">Weaponry</span>
+              <span class="before-after"><span class="pill">3</span><span class="arrow">to</span><span class="pill after up">4</span></span>
+            </div>
+          </article>
+
+          <article class="class-panel">
+            <div class="class-title"><span class="crest committee"></span><h3>Committee</h3></div>
+            <div class="stat-change">
+              <span class="stat-name">Gold</span>
+              <span class="before-after"><span class="pill">3</span><span class="arrow">to</span><span class="pill after down">2</span></span>
+            </div>
+            <div class="stat-change">
+              <span class="stat-name">Weaponry</span>
+              <span class="before-after"><span class="pill">4</span><span class="arrow">to</span><span class="pill after down">3</span></span>
+            </div>
+          </article>
+
+          <article class="class-panel">
+            <div class="class-title"><span class="crest bourgeoisie"></span><h3>Bourgeoisie</h3></div>
+            <div class="stat-change">
+              <span class="stat-name">Gold</span>
+              <span class="before-after"><span class="pill">4</span><span class="arrow">to</span><span class="pill after up">5</span></span>
+            </div>
+            <div class="stat-change">
+              <span class="stat-name">Loyalty</span>
+              <span class="before-after"><span class="pill">2</span><span class="arrow">to</span><span class="pill after up">3</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <div class="section-head">
+            <h2>Objective Thresholds</h2>
+          </div>
+          <div class="goal-list">
+            <div class="goal-row">
+              <span class="goal-class">Peasants</span>
+              <span class="goal-text">Reach food target</span>
+              <span class="delta buff">15 to 14</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Nobles</span>
+              <span class="goal-text">Lower National Freedom target</span>
+              <span class="delta buff">1 to 2</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Nobles</span>
+              <span class="goal-text">Gold target</span>
+              <span class="delta buff">30 to 28</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Nobles</span>
+              <span class="goal-text">Weaponry target</span>
+              <span class="delta buff">10 to 9</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Committee</span>
+              <span class="goal-text">Enemies killed target</span>
+              <span class="delta nerf">3 to 5</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Bourgeoisie</span>
+              <span class="goal-text">Loyalty target after Enlightenment</span>
+              <span class="delta nerf">7 to 8</span>
+            </div>
+            <div class="goal-row">
+              <span class="goal-class">Bourgeoisie</span>
+              <span class="goal-text">National Freedom target</span>
+              <span class="delta nerf">9 to 10</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2>Design Intent</h2>
+          </div>
+          <div class="intent-grid" style="grid-template-columns: 1fr 1fr">
+            <article class="panel intent" style="border-top-color: var(--bad)">
+              <h3>Slow Committee burst</h3>
+              <p>Lower opening gold and weaponry, then make execution and King Louis cards more expensive.</p>
+            </article>
+            <article class="panel intent" style="border-top-color: var(--blue)">
+              <h3>Shape Bourgeoisie arc</h3>
+              <p>Give a cleaner start, then raise endgame loyalty and National Freedom thresholds.</p>
+            </article>
+            <article class="panel intent" style="border-top-color: var(--good)">
+              <h3>Raise Peasant floor</h3>
+              <p>More food, more food income, cheaper farm, and a slightly easier food objective.</p>
+            </article>
+            <article class="panel intent" style="border-top-color: var(--gold)">
+              <h3>Keep Nobles viable</h3>
+              <p>Extra gold and weaponry plus lower economic and military objective targets.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Card Cost Changes</h2>
+          <p>
+            Tweak 4 cost deltas apply only to gold, food, and weaponry costs. Assembly and loyalty costs are shown as unchanged.
+          </p>
+        </div>
+        <div class="card-list">
+          <div class="card-row">
+            <div>
+              <div class="card-name">Abolish Feudalism</div>
+              <div class="costs">Weaponry 3 to 2; assembly 2 unchanged</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 75%"></span></div><div class="cost-mini"><span style="width: 50%"></span></div></div>
+            <span class="change-chip buff">-1</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Build Farm</div>
+              <div class="costs">Gold 4 to 3</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 80%"></span></div><div class="cost-mini"><span style="width: 60%"></span></div></div>
+            <span class="change-chip buff">-1</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Appoint General</div>
+              <div class="costs">Gold 2 to 5; assembly 1 unchanged</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 33%"></span></div><div class="cost-mini"><span style="width: 83%"></span></div></div>
+            <span class="change-chip nerf">+3</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Enter Enlightenment</div>
+              <div class="costs">Assembly 2 unchanged; no payable resource cost affected</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 33%"></span></div><div class="cost-mini"><span style="width: 33%"></span></div></div>
+            <span class="change-chip nerf">+1 listed</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Guillotine King Louis XVI</div>
+              <div class="costs">Weaponry 2 to 4; loyalty 1 unchanged</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 33%"></span></div><div class="cost-mini"><span style="width: 67%"></span></div></div>
+            <span class="change-chip nerf">+2</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Habeas Corpus</div>
+              <div class="costs">Assembly 1 and loyalty 1 unchanged; no payable resource cost affected</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 25%"></span></div><div class="cost-mini"><span style="width: 25%"></span></div></div>
+            <span class="change-chip nerf">+1 listed</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Kill Enemy of Revolution</div>
+              <div class="costs">Weaponry 2 to 6; loyalty 2 unchanged</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 29%"></span></div><div class="cost-mini"><span style="width: 86%"></span></div></div>
+            <span class="change-chip nerf">+4</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Liberate</div>
+              <div class="costs">Weaponry 1 to 2</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 20%"></span></div><div class="cost-mini"><span style="width: 40%"></span></div></div>
+            <span class="change-chip nerf">+1</span>
+          </div>
+          <div class="card-row">
+            <div>
+              <div class="card-name">Nepotism</div>
+              <div class="costs">Gold 3 to 4; loyalty 1 unchanged</div>
+            </div>
+            <div class="cost-visual"><div class="cost-mini"><span style="width: 60%"></span></div><div class="cost-mini"><span style="width: 80%"></span></div></div>
+            <span class="change-chip nerf">+1</span>
+          </div>
+        </div>
+        <p class="note">
+          Listed-only deltas for Enter Enlightenment and Habeas Corpus come from <code>balance.md</code>, but their current costs are assembly/loyalty only. Under the engine rule, those deltas do not change their payable cost unless a gold, food, or weaponry cost is later added.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
