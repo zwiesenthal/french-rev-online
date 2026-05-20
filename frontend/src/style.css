@@ -330,6 +330,11 @@ h3,
   grid-template-rows: 145px 1fr auto;
 }
 
+.card-art {
+  position: relative;
+  min-width: 0;
+}
+
 .card.major {
   border-width: 2px;
   border-color: #9d2f2f;
@@ -344,6 +349,31 @@ h3,
   height: 145px;
   object-fit: cover;
   background: #ded3c1;
+  display: block;
+}
+
+.card-meta {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  max-width: calc(100% - 16px);
+}
+
+.card-meta span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 4px 7px;
+  border: 1px solid rgba(32, 27, 22, 0.28);
+  border-radius: 6px;
+  background: rgba(255, 250, 240, 0.93);
+  color: #211d19;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.15;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
 }
 
 .card-body {

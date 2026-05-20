@@ -12,6 +12,8 @@ type Card = {
   name: string;
   flavor: string;
   reward: string;
+  cost: Partial<Record<keyof Stats, number>>;
+  requirements: Partial<Record<keyof Stats, number>>;
   major: boolean;
   tactique: boolean;
   image: string;
@@ -74,6 +76,9 @@ type Room = {
 type GameData = {
   classes: ClassDef[];
   cards: Card[];
+  balance?: {
+    costDelta?: Record<string, number>;
+  };
 };
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -130,6 +135,39 @@ const isLegal = (type: string, cardId = "") => room?.game?.legal.some((move) => 
 
 const statPill = (label: string, value: number, title?: string) =>
   `<span class="stat" title="${title ?? label}"><b>${label}</b>${value}</span>`;
+
+const statLabels: Record<string, string> = {
+  food: "F",
+  gold: "G",
+  weaponry: "W",
+  loyalty: "L",
+  assembly: "A",
+  foodPerTurn: "F/t",
+  goldPerTurn: "G/t",
+  foodRequired: "Eat",
+};
+
+const adjustedCost = (card: Card, stat: string, value: number) => {
+  if (!["food", "gold", "weaponry"].includes(stat)) return value;
+  return Math.max(0, value + (data.balance?.costDelta?.[card.id] ?? 0));
+};
+
+const formatStats = (entries: Partial<Record<keyof Stats, number>>, card?: Card) =>
+  Object.entries(entries)
+    .filter(([, value]) => Number(value) > 0)
+    .map(([stat, value]) => `${statLabels[stat] ?? stat}:${card ? adjustedCost(card, stat, Number(value)) : Number(value)}`)
+    .join(" ");
+
+const renderCardMeta = (card: Card) => {
+  const cost = formatStats(card.cost, card) || "Free";
+  const requirements = formatStats(card.requirements);
+  return `
+    <div class="card-meta" aria-label="Cost and requirements">
+      <span title="Cost">Cost ${cost}</span>
+      ${requirements ? `<span title="Requirement">Req ${requirements}</span>` : ""}
+    </div>
+  `;
+};
 
 const renderHome = () => `
   <section class="setup">
@@ -237,13 +275,17 @@ const renderCard = (id: string) => {
   const card = cardById(id);
   if (!card) return "";
   const legal = isLegal("play", id) && isMyTurn();
+  const kind = card.major ? "Major" : card.tactique ? "Tactique" : "";
   return `
     <article class="card ${card.major ? "major" : ""} ${legal ? "" : "locked"}">
-      <img src="${card.image}" alt="" loading="lazy" />
+      <div class="card-art">
+        <img src="${card.image}" alt="" loading="lazy" />
+        ${renderCardMeta(card)}
+      </div>
       <div class="card-body">
         <div class="card-title">
           <h3>${card.name}</h3>
-          <span>${card.major ? "Major" : card.tactique ? "Tactique" : "Action"}</span>
+          ${kind ? `<span>${kind}</span>` : ""}
         </div>
         <p class="flavor">${card.flavor || "&nbsp;"}</p>
         <p>${card.reward}</p>
@@ -272,7 +314,7 @@ const renderBoard = () => {
       <div class="players">${game.players.map(renderPlayer).join("")}</div>
       <section class="market">
         <div class="market-head">
-          <h2>Action Market</h2>
+          <h2>Market</h2>
           <div class="quick-actions">
             <button data-action="gain_food" ${isMyTurn() && isLegal("gain_food") && !game.finished ? "" : "disabled"}>Gain food</button>
             <button data-action="gain_gold" ${isMyTurn() && isLegal("gain_gold") && !game.finished ? "" : "disabled"}>Gain gold</button>

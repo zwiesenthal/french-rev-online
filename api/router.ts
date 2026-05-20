@@ -1,4 +1,4 @@
-import { cards, classes } from "../src/shared/engine.js";
+import { cards, classes, playableBalance } from "../src/shared/engine.js";
 import { applyRoomAction, createRoom, forceAiStep, getRoom, joinRoom, startRoom } from "../src/shared/rooms.js";
 
 type Req = {
@@ -49,7 +49,7 @@ export default function handler(req: Req, res: Res) {
     const parts = partsFrom(req);
     const body = bodyObject(req.body);
 
-    if (method === "GET" && parts[0] === "data") return send(res, { cards, classes });
+    if (method === "GET" && parts[0] === "data") return send(res, { cards, classes, balance: playableBalance() });
     if (method === "POST" && parts[0] === "rooms" && parts.length === 1) return send(res, createRoom(body.timerSeconds));
     if (method === "GET" && parts[0] === "rooms" && parts[1]) return send(res, getRoom(parts[1]));
     if (method === "POST" && parts[0] === "rooms" && parts[1] && parts[2] === "join") return send(res, joinRoom(parts[1], body));
