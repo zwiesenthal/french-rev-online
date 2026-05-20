@@ -8,3 +8,5 @@ reports/*.log
 reports/*.in_progress.md
 reports/checkpoints/
 .playwright-mcp/
+.vercel
+.env*.local
